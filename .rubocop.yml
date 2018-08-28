@@ -1,0 +1,37 @@
+---
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    # Ignore HTML related things
+    - '**/*.erb'
+    # Ignore vendored gems
+    - 'vendor/**/*'
+    # Ignore code from test fixtures
+    - 'spec/fixtures/**/*'
+  TargetRubyVersion: 2.0
+
+# Follow the Puppet Style Guide for trailing commas
+# (except in arguments lists, which is incompatible with Ruby 1.8)
+#Style/TrailingCommaInArguments:
+#  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
+# Always prefer Puppet-style regex delimiters
+Style/RegexpLiteral:
+  AllowInnerSlashes: true
+
+# Use the line lenght specified in the Puppet Sytle Guide
+Metrics/LineLength:
+  Max: 140
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/TernaryParentheses:
+  Enabled: false
+
+# aparently (megaraid_adapter == 0) is not equiv to megaraid_adapters.zero?
+Style/NumericPredicate:
+  Enabled: false
